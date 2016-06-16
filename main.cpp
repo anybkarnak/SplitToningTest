@@ -55,7 +55,7 @@ int main(int argc,      // Number of strings in array argv
     }
     else
     {
-        path = "download12.jpg";
+        path = "art-therapy-career2.jpg";
     }
 
     //input image
@@ -72,12 +72,9 @@ int main(int argc,      // Number of strings in array argv
 
     convertRGB2FLOAT(im_rgb.data, firstRgbData1, im_rgb.rows, im_rgb.cols);
 
-    split_toning(firstRgbData1, firstRgbData1, im_rgb.cols, im_rgb.rows,  0.0, 0.3, 0.5);
-
-    //toGrayskale(firstRgbData1, firstRgbData1, im_rgb.rows, im_rgb.cols);
+    split_toning(firstRgbData1, firstRgbData1, im_rgb.cols, im_rgb.rows,  0.0, 0.3);
 
     convertFLOAT2RGB(firstRgbData1, im_gray2.data, im_rgb.rows, im_rgb.cols);
-
 
     cv::Mat im_gray3(cv::Size(im_rgb.cols, im_rgb.rows), CV_8UC3);
 
@@ -85,15 +82,13 @@ int main(int argc,      // Number of strings in array argv
 
     convertRGB2FLOAT(im_rgb.data, firstRgbData2, im_rgb.rows, im_rgb.cols);
 
-    split_toning(firstRgbData2, firstRgbData2, im_rgb.cols, im_rgb.rows,  0.7, 0.1, 0.5);
-
-    //toGrayskale(firstRgbData2, firstRgbData2, im_rgb.rows, im_rgb.cols);
+    split_toning(firstRgbData2, firstRgbData2, im_rgb.cols, im_rgb.rows,  0.7, 0.1);
 
     convertFLOAT2RGB(firstRgbData2, im_gray3.data, im_rgb.rows, im_rgb.cols);
 
 
-    cv::imshow("gscale_me", im_gray2);
-    cv::imshow("gscale_me1", im_gray3);
+    cv::imshow("00-03_hues", im_gray2);
+    cv::imshow("07-01_hues", im_gray3);
     cv::imshow("gscale", im_gray);
 
     if (cv::waitKey() == 27)

@@ -19,19 +19,20 @@
 //balance - точка разделения на "света" и "тени" (0.5 - середина)
 //
 //Оформить в отдельную пару .h/.cpp файлов с возможностью вызова функции из С-окружения:
+//Данные в памяти располагаются в виде ARGB (A - зарезервированный канал альфы, имеет индекс 0, R - красный, индекс 1 и т.д.).
+//Значения компонент пикселей от 0 до 1.
+
+extern "C" {
 
 void split_toning(
-        float* pixelsSrc,
-        float* pixelsDst,
+        float *pixelsSrc,
+        float *pixelsDst,
         int width,
         int height,
         float highlightsHue,
         float shadowsHue,
-        float balance = 0.5
-);
+        float balance = 0.5);
+};
 
-void toGrayskale(const float* src, float* dst, int height, int width);
-//Данные в памяти располагаются в виде ARGB (A - зарезервированный канал альфы, имеет индекс 0, R - красный, индекс 1 и т.д.).
-//Значения компонент пикселей от 0 до 1.
 
 #endif //SPLITTONINGTEST_TONER_H
