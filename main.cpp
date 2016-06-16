@@ -55,7 +55,7 @@ int main(int argc,      // Number of strings in array argv
     }
     else
     {
-        path = "download11.jpg";
+        path = "download12.jpg";
     }
 
     //input image
@@ -68,21 +68,38 @@ int main(int argc,      // Number of strings in array argv
 
     cv::Mat im_gray2(cv::Size(im_rgb.cols, im_rgb.rows), CV_8UC3);
 
-    float* firstRgbData = new float[im_rgb.rows * im_rgb.cols * 4]();
+    float* firstRgbData1 = new float[im_rgb.rows * im_rgb.cols * 4]();
 
-    convertRGB2FLOAT(im_rgb.data, firstRgbData, im_rgb.rows, im_rgb.cols);
+    convertRGB2FLOAT(im_rgb.data, firstRgbData1, im_rgb.rows, im_rgb.cols);
 
-    toGrayskale(firstRgbData, firstRgbData, im_rgb.rows, im_rgb.cols);
+    split_toning(firstRgbData1, firstRgbData1, im_rgb.cols, im_rgb.rows,  0.0, 0.3, 0.5);
 
-    convertFLOAT2RGB(firstRgbData, im_gray2.data, im_rgb.rows, im_rgb.cols);
+    //toGrayskale(firstRgbData1, firstRgbData1, im_rgb.rows, im_rgb.cols);
+
+    convertFLOAT2RGB(firstRgbData1, im_gray2.data, im_rgb.rows, im_rgb.cols);
+
+
+    cv::Mat im_gray3(cv::Size(im_rgb.cols, im_rgb.rows), CV_8UC3);
+
+    float* firstRgbData2 = new float[im_rgb.rows * im_rgb.cols * 4]();
+
+    convertRGB2FLOAT(im_rgb.data, firstRgbData2, im_rgb.rows, im_rgb.cols);
+
+    split_toning(firstRgbData2, firstRgbData2, im_rgb.cols, im_rgb.rows,  0.7, 0.1, 0.5);
+
+    //toGrayskale(firstRgbData2, firstRgbData2, im_rgb.rows, im_rgb.cols);
+
+    convertFLOAT2RGB(firstRgbData2, im_gray3.data, im_rgb.rows, im_rgb.cols);
 
 
     cv::imshow("gscale_me", im_gray2);
+    cv::imshow("gscale_me1", im_gray3);
     cv::imshow("gscale", im_gray);
 
     if (cv::waitKey() == 27)
     {
-        delete[]firstRgbData;
+        delete[]firstRgbData1;
+        delete[] firstRgbData2;
         return 0;
     }
 

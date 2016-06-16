@@ -27,9 +27,10 @@ void split_toning(
         int height,
         float highlightsHue,
         float shadowsHue,
-        float balance
+        float balance = 0.5
 );
-void toGrayskale(const float* src, float* dst, int width, int height);
+
+void toGrayskale(const float* src, float* dst, int height, int width);
 //Данные в памяти располагаются в виде ARGB (A - зарезервированный канал альфы, имеет индекс 0, R - красный, индекс 1 и т.д.).
 //Значения компонент пикселей от 0 до 1.
 
