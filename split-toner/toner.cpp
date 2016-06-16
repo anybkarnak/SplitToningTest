@@ -4,7 +4,7 @@
 
 #include "toner.h"
 
-//converts colour hue to grb colour
+//converts colour hue to grb colour http://www.easyrgb.com/index.php?X=MATH&H=19#text19
 static inline float _Hue_2_RGB(float v1, float v2, float vH)
 {
     if (vH < 0.0f)
